@@ -8,6 +8,15 @@
     <title>Document</title>
 </head>
 <body>
-<?=$greeting?>
+    <header>
+        <h1><?=$greeting?></h1>
+    </header>
 </body>
 </html>
+<style>
+    header{
+        background-color:beige;
+        padding: 2em;
+        text-align: center;
+    }
+</style>
