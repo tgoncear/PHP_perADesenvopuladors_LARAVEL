@@ -1,10 +1,16 @@
 <?php
 require "helpers.php";
 require "Task.php";
-$user = 'debian-sys-maint';
-$pass = 'YkXqIXFQIkDtMNPs';
+//$user = 'debian-sys-maint';
+//$pass = 'YkXqIXFQIkDtMNPs';
+//$dsn = 'mysql:host=localhost;dbname=phpLaravelDevs';
+require 'config.php';
+$user = $config['database']['user'];
+$pass = $config['database']['password'];
+$dsn = "{$config['database']['databasetype']}:host={$config['database']['host']};dbname={$config['database']['databasename']}";
+
 try{
-    $dbh = new PDO('mysql:host=localhost;dbname=phpLaravelDevs',$user,$pass);
+    $dbh = new PDO($dsn,$user,$pass);
 }catch(Exception $e){
     echo 'Error de connexio a la base de dades';
 }
