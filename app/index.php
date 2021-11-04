@@ -1,8 +1,8 @@
 <?php
 
+use App\Framework\App;
 use App\Framework\Database;
 
-require 'config.php';
 require "helpers.php";
 
 //$user = 'debian-sys-maint';
@@ -10,8 +10,8 @@ require "helpers.php";
 //$dsn = 'mysql:host=localhost;dbname=phpLaravelDevs';
 
 //$dbh = connectDB($config);
-$database = new Database($config);
-$tasks = $database->selectAll('tasks');
+$database = new Database(App::get('config')['database']);
+$tasks = Database::selectAll('tasks');
 //$statement = $dbh->prepare('SELECT * FROM tasks');
 //$statement->execute();
 //$tasks = $statement->fetchAll(PDO::FETCH_CLASS,'Task');
