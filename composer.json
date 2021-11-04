@@ -1,0 +1,17 @@
+{
+    "name": "alumne/php_per-adesenvopuladors_laravel",
+    "description": "bla bla bla",
+    "type": "project",
+    "autoload": {
+        "classmap": [
+            "./"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Tudor",
+            "email": "tgoncear@gmail.com"
+        }
+    ],
+    "require": {}
+}
