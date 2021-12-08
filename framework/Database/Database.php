@@ -5,27 +5,32 @@ use PDO;
 
 class Database
 {
-    private static $dbh;
-    public $config;
-    /**
-     * @var Connection
-     */
-    private $connection;
+    protected $pdo;
 
-
-    public static function make(PDO $make)
-    {
-        return self;
+    public function __construct($pdo){
+        $this->pdo = $pdo;
     }
 
-    public static function selectAll($table){
-        $statement = static::$dbh->prepare('SELECT * FROM tasks;');
+    public function selectAll($table){
+        $statement = $this->pdo->prepare('SELECT * FROM tasks;');
         $statement->execute();
-        return $statement->fetchAll(PDO::FETCH_CLASS,Task::class);
+        return $statement->fetchAll(PDO::FETCH_CLASS);
 
     }
-    function insert(){
+    function insert($table, $parameters) {
+        $sql = sprintf(
+            'insert into %s (%s) values (%s)',
+            $table,
+            implode(', ', array_keys($parameters)),
+            ':' . implode(', :', array_keys($parameters))
+        );
 
+        try {
+            $statement = $this->pdo->prepare($sql);
+
+            $statement->execute($parameters);
+        } catch (\Exception $e) {
+            //
+        }
     }
-
 }
