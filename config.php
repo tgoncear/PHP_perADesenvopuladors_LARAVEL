@@ -2,10 +2,10 @@
 
 return [
     'database' => [
-        'user' => 'debian-sys-maint',
-        'password' => 'YkXqIXFQIkDtMNPs',
-        'databasetype' => 'mysql',
-        'host' => 'localhost',
-        'databasename' => 'phpLaravelDevs'
+        'user' => $_ENV['DB_USERNAME'],
+        'password' => $_ENV['DB_PASSWORD'],
+        'databasetype' => $_ENV['DB_CONNECTION'],
+        'host' => $_ENV['DB_HOST'],
+        'databasename' => $_ENV['DB_DATABASE']
     ]
 ];
